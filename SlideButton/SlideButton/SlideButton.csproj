@@ -6,4 +6,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="WpfControlLibrary2">
+      <HintPath>F:\Project\WpfControlLibrary2\WpfControlLibrary2\bin\Debug\netcoreapp3.1\WpfControlLibrary2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
