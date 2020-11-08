@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="SlideButtonProject.SlideButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SlideButtonProject">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="SlideButton" TargetType="{x:Type ToggleButton}">
+            <Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)"
+                                                To="Gainsboro"
+                                                Duration="0:0:0.15"/>
+                                <ColorAnimation Storyboard.TargetName="Slider"
+                                                Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                To="Gray"
+                                                Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="CheckStates">
+                        <VisualState x:Name="Checked">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)"
+                                                To="LimeGreen"
+                                                Duration="0:0:0.15"/>
+                                <ColorAnimation Storyboard.TargetName="Slider"
+                                                Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                To="WhiteSmoke"
+                                                Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Unchecked" />
+                        <VisualState x:Name="Indeterminate" />
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="9" Background="Gainsboro"/>
+                <Ellipse x:Name="Slider" Fill="Gray" Width="9" Height="9" HorizontalAlignment="Center" Margin="0,4,0,4">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform X="-16" Y="0"/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+            </Grid>
+
+            <!-- ストーリーボードの設定 -->
+            <ControlTemplate.Resources>
+                <!-- ON時 -->
+                <Storyboard x:Key="OnChecking">
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"  Storyboard.TargetName="Slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:00.1500000" Value="16" />
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+                <!-- OFF時 -->
+                <Storyboard x:Key="OnUmChecking">
+                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"  Storyboard.TargetName="Slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)">
+                        <SplineDoubleKeyFrame KeyTime="00:00:00.1500000" Value="-16" />
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+
+            <!-- トリガーの設定 -->
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <!-- IsCheckedがTrueになるときのStoryboard開始指示 -->
+                    <Trigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource OnChecking}" x:Name="OnChecking_BeginStoryboard" />
+                    </Trigger.EnterActions>
+                    <!-- IsCheckedがTrueから抜けるときのStoryboard開始指示 -->
+                    <Trigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource OnUmChecking}" x:Name="OnUnchecking_BeginStoryboard" />
+                    </Trigger.ExitActions>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <ToggleButton Content="ToggleButton" Template="{StaticResource SlideButton}"/>
+    </Grid>
+</UserControl>
