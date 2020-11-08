@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SlideButton
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SlideButton.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SlideButtonControl : UserControl
     {
-        public MainWindow()
+        public SlideButtonControl()
         {
             InitializeComponent();
         }
