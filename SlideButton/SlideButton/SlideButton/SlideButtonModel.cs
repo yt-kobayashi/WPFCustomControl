@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SlideButton
 {
-    public class SlideButtonView
+    public class SlideButtonModel
     {
     }
 }

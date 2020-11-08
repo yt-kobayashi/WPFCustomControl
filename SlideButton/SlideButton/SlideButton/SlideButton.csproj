@@ -5,4 +5,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ReactiveProperty" Version="7.5.1" />
+  </ItemGroup>
+
 </Project>
