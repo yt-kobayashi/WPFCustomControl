@@ -6,7 +6,8 @@
              xmlns:vm="clr-namespace:SlideButton"
              xmlns:local="clr-namespace:SlideButton"
              mc:Ignorable="d" 
-             d:DesignHeight="18" d:DesignWidth="50">
+             d:DesignHeight="18" d:DesignWidth="50"
+             >
     <UserControl.Resources>
         <ControlTemplate x:Key="SlideButton" TargetType="{x:Type ToggleButton}">
             <Grid>
@@ -83,6 +84,6 @@
     </UserControl.DataContext>
 
     <Grid>
-        <ToggleButton x:Name="SlideButton" Template="{StaticResource SlideButton}" Width="{Binding vm.Width.Value}" Height="{Binding vm.Height.Value}"/>
+        <ToggleButton x:Name="SlideButton" Template="{StaticResource SlideButton}"/>
     </Grid>
 </UserControl>
