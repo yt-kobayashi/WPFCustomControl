@@ -4,18 +4,18 @@ using System.Text;
 using System.Reactive;
 using Reactive.Bindings;
 using System.Reactive.Linq;
+using System.ComponentModel;
 
 namespace SlideButton
 {
-    public class SlideButtonViewModel
+    public class SlideButtonViewModel : INotifyPropertyChanged
     {
-        public ReactiveProperty<int> Width { get; set; }
-        public ReactiveProperty<int> Height { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public ReactiveProperty<int> Width { get; set; } = new ReactiveProperty<int>();
+        public ReactiveProperty<int> Height { get; set; } = new ReactiveProperty<int>();
 
         public SlideButtonViewModel()
         {
-            this.Width = new ReactiveProperty<int>(50);
-            this.Height = this.Width.Select(x => (int)(x * 0.36)).ToReactiveProperty();
         }
     }
 }
