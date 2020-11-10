@@ -43,7 +43,8 @@
                         <VisualState x:Name="Indeterminate" />
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-                <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="9" Background="Gainsboro"/>
+                <Border x:Name="Border" Grid.ColumnSpan="2"
+                        CornerRadius="9" Background="Gainsboro"/>
                 <Ellipse x:Name="Slider" Fill="Gray" Width="9" Height="9" HorizontalAlignment="Center" Margin="0,4,0,4">
                     <Ellipse.RenderTransform>
                         <TransformGroup>
@@ -84,6 +85,11 @@
     </UserControl.DataContext>
 
     <Grid>
-        <ToggleButton x:Name="SlideButton" Template="{StaticResource SlideButton}"/>
+        <ToggleButton 
+            x:Name="SlideButton"
+            Template="{StaticResource SlideButton}"
+            Width="{Binding Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Height="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            />
     </Grid>
 </UserControl>

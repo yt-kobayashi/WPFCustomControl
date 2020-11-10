@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <slide:SlideButtonControl HorizontalAlignment="Left" Height="18" Margin="132,105,0,0" VerticalAlignment="Top" Width="51"/>
-
+        <slide:SlideButtonControl HorizontalAlignment="Left" Height="18" Margin="177,117,0,0" VerticalAlignment="Top" Width="56"/>
     </Grid>
 </Window>
