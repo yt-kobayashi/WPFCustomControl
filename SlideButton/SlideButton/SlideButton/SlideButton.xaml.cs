@@ -20,9 +20,21 @@ namespace SlideButton
     /// </summary>
     public partial class SlideButtonControl : UserControl
     {
+        private SlideButtonViewModel _dataContext;
+
         public SlideButtonControl()
         {
             InitializeComponent();
+
+            _dataContext = new SlideButtonViewModel();
+            this.DataContext = _dataContext;
+
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                _dataContext.Width.Value = (int)ActualWidth;
+                _dataContext.Height.Value = (int)ActualHeight;
+            }));
+
         }
     }
 }
